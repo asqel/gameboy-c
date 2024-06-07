@@ -10,4 +10,4 @@ gcc -c platform.c -o build/o2.o $CFLAGS
 gcc -c minisdl.c -o build/o3.o $CFLAGS
 
 ld $LDFLAGS -o gameboy.elf build/o1.o build/o2.o build/o3.o
-cp gameboy.elf ../profanOS/out/zapps/
+cp gameboy.elf ../profanOS/out/zapps/fatpath
