@@ -1,0 +1,4 @@
+//olivine:exec
+tcc gameboy.c platform.c minisdl.c -o gameboy.elf
+cp gameboy.elf /bin/fatpath/
+debug -r
