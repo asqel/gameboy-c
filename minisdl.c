@@ -26,6 +26,25 @@ void SDL_assert_func(int x, int line) {
 	exit(1);
 }
 
+// if [0] == 0 it is 1 byte
+//not in order
+/*
+0 - 9
+A - B
+*/
+char scancodes[][2] = {
+	{0, 0x0B}, // 0
+	{0, 0x02}, // 1
+	{0, 0x03}, // 2
+	{0, 0x04}, // 3
+	{0, 0x05}, // 4
+	{0, 0x06}, // 5
+	{0, 0x07}, // 6
+	{0, 0x08}, // 7
+	{0, 0x09}, // 8
+	{0, 0x0A}, // 9
+};
+
 int SDL_PollEvent(SDL_Event *ev) {
 	uint32_t key = c_kb_get_scfh();
 	if (!key)
@@ -218,18 +237,18 @@ char *optarg = NULL;
 
 int i_replace_getopt(int argc, char **argv, char **rom_file) {
 	*rom_file = NULL;
-	for (int i = 0; i < argc; i++) {
+	for (int i = 1; i < argc; i++) {
 		if (!strcmp(argv[i], "-f")) {
 			i++;
 			if (i >= argc) {
-				printf("usage %s -f [rom file path]");
+				printf("usage %s -f [rom file path]\n", argv[0]);
 				exit(1);
 			}
 			*rom_file = argv[i];
 		}
 	}
 	if (*rom_file == NULL) {
-		printf("usage %s -f [rom file path]");
+		printf("usage %s -f [rom file path]\n", argv[0]);
 		exit(1);
 	}
 	return -1;
